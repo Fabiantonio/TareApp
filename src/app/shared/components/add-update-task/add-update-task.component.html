@@ -1,0 +1,44 @@
+<ion-content color="light">
+  <app-header [centerTitle]="true" [isModal]="true" title="Tarea"></app-header>
+
+  <app-custom-input [control]="form.controls.titulo" label="Titulo" type="text"></app-custom-input>
+  <div class="validators" *ngIf="form.controls.titulo.errors && form.controls.titulo.dirty">
+    <div *ngIf="form.controls.titulo">Ingresa un titulo</div>
+    <div *ngIf="form.controls.titulo.errors?.['minLength']">Ingresa un titulo válido de al menos 4 caracteres</div>
+  </div>
+
+  <app-custom-input [control]="form.controls.descripcion" label="Descripcion" type="textarea"></app-custom-input>
+  <div class="validators" *ngIf="form.controls.descripcion.errors && form.controls.descripcion.dirty">
+    <div *ngIf="form.controls.descripcion">Ingresa un titulo</div>
+    <div *ngIf="form.controls.descripcion.errors?.['minLength']">Ingresa un titulo válido de al menos 4 caracteres</div>
+  </div>
+
+  <ion-item class="item-header" *ngIf="form.value.items.length">
+    <ion-label>Actividades</ion-label>
+    <span slot="end">Progreso: {{getPercentage()}}%</span>
+    <ion-button slot="end" mode="ios">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-range [value]="getPercentage()"></ion-range>
+  </ion-item>
+
+
+  <ion-reorder-group [disabled]="false" (ionItemReorder)="handleReorder($any($event))">
+    <ion-item *ngFor="let item of form.value.items; index as i">
+      <ion-checkbox slot="start" color="succcess" [(ngModel)]="item.completado"></ion-checkbox>
+      <ion-label> {{ item.nombre }} </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="removeItem(i)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+
+
+
+</ion-content>

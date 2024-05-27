@@ -1,0 +1,74 @@
+
+<ion-content>
+  <app-header></app-header>
+  <app-logo></app-logo>
+  <h2 class="ion-text-center ion-no-margin">Iniciar Sesión</h2>
+  <div class="content">
+    <div class="d-flex-center">
+      <form (keyup.enter)="submit()" (ngSubmit)="submit()" class="ion-text-center">
+        <app-custom-input autocomplete="email" [control]="form.controls.email" label="Correo" type="email" icon="mail-outline"></app-custom-input>
+        <div class="validators" *ngIf="form.controls.email.errors && form.controls.email.dirty">
+          <div *ngIf="form.controls.email.errors?.['required']">Ingresa tu email</div>
+          <div *ngIf="form.controls.email.errors?.['email']">Ingresa un email válido</div>
+        </div>
+        <app-custom-input [control]="form.controls.password" label="Contraseña" type="password" icon="lock-closed-outline"></app-custom-input>
+        <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.dirty">
+          <div *ngIf="form.controls.password.errors?.['required']">Ingresa tu contraseña</div>
+        </div>
+        <ion-button routerLink="/tabs" class="ion-margin-vertical" [disabled]="form.invalid" type="submit" shape="round">
+          Entrar
+          <ion-icon slot="end" name="log-in-outline"></ion-icon>
+        </ion-button>
+        <div>
+          <div>¿No tienes cuenta?</div>
+          <ion-button routerLink="/sign-up" class="ion-margin-vertical" shape="round">
+            Registrate
+            <ion-icon slot="end" name="person-add-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <div
+        style="
+          border-top: 1px solid rgb(206, 204, 204);
+          width: 100%;
+          text-align: center;
+          margin: 2rem 0 0 0;
+          position: relative;
+        "
+      >
+        <p
+          style="
+            border-radius: 10px;
+            position: relative;
+            bottom: 17.2px;
+            background: var(--ion-color-primary);
+            color: white;
+            width: fit-content;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+            margin: 0 auto;
+          "
+        >
+          También ingresa con
+        </p>
+      </div>
+        <div class="redes-sociales">
+          <div class="apple">
+            <a href="" >
+              <img src="../../../assets/images/apple (1).png" alt="" />
+            </a>
+          </div>
+          <div class="google">
+            <a href="#" (click)="0">
+              <img src="../../../assets/images/google.png" alt="" />
+            </a>
+          </div>
+          <div class="facebook" style="color: green">
+            <a href="" >
+              <img src="../../../assets/images/facebook.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

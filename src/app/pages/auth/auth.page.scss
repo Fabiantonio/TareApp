@@ -1,0 +1,36 @@
+.sign-up {
+    padding: 50px;
+}
+
+ion-button {
+    width: 170px;
+}
+
+.redes-sociales {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+
+    div {
+        padding: 0.5rem;
+        border-radius: 100px;
+        text-align: center;
+        vertical-align: middle;
+
+        i {
+            color: white;
+        }
+
+        img {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
+
+@media (min-width: 769px) {
+    form {
+        width: 500px;
+        padding: 50px 10px;
+    }
+}
